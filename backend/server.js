@@ -18,7 +18,9 @@ const PORT = process.env.PORT || 5002;
 
 // Middlewares
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: process.env.CLIENT_URL,  // e.g. https://myportfolio-sachin.vercel.app
+}));
 
 
 // Connect Database
