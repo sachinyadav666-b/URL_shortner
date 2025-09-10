@@ -1,4 +1,4 @@
-import UrlForm from "../components/Urlform";
+import UrlForm from ".././components/UrlForm";
 
 export default function Home() {
   return (
