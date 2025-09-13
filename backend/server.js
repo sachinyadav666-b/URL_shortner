@@ -59,7 +59,7 @@ app.post("/api/short", async (req, res) => {
     }
     const shortUrl = nanoid(8)
     const url = new Url({ originalUrl, shortUrl })
-    const myUrl = `http://localhost:5002/${shortUrl}`
+    const myUrl = `process.env.BASE_URL/${shortUrl}`
     const qrCodeimg = await QRCode.toDataURL(myUrl)
     await url.save()
     res.status(200).json({ message: "URL Generated", shortUrl: myUrl, qrCodeimg })
