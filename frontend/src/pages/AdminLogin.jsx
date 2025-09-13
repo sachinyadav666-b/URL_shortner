@@ -22,7 +22,7 @@ export default function AdminLogin() {
   return (
     <div className="flex justify-center items-center min-h-[70vh]">
       <div className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center text-indigo-600">Admin Login</h2>
+        <h2 className="text-2xl font-bold text-center text-indigo-600">Only For Admin</h2>
         <form onSubmit={handleLogin} className="mt-6 space-y-4">
           <input
             type="text"

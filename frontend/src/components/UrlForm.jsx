@@ -1,5 +1,5 @@
 import { useState } from "react";
-import API from "../services/api";
+import API from ".././services/api";
 
 export default function UrlForm() {
   const [originalUrl, setOriginalUrl] = useState("");
@@ -9,6 +9,8 @@ export default function UrlForm() {
     e.preventDefault();
     console.log(originalUrl);
     try {
+      console.log("Backend URL:", import.meta.env.VITE_API_URL);
+
       const res = await API.post("/short", { originalUrl }); // ✅ match backend
       console.log(res);
       setShortUrl(res.data);

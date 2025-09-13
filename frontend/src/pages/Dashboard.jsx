@@ -5,7 +5,7 @@ import API from "../services/api";
 export default function Dashboard() {
   const [urls, setUrls] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [urlsPerPage] = useState(5); // 👈 Number of items per page
+  const [urlsPerPage] = useState(5); // Number of items per page
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -53,7 +53,7 @@ export default function Dashboard() {
         </button>
       </div>
 
-      <div className="mt-6">
+      <div className="mt-6 overflow-auto">
         <table className="w-full border rounded-lg shadow-lg bg-white">
           <thead className="bg-indigo-600 text-white">
             <tr>
@@ -71,12 +71,12 @@ export default function Dashboard() {
                 </td>
                 <td className="p-3 text-indigo-600 break-words">
                   <a
-                    href={`http://localhost:5002/${url.shortUrl}`}
+                    href={`${import.meta.env.API_URL}/${url.shortUrl}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="underline"
                   >
-                    http://localhost:5002/{url.shortUrl}
+                    `${import.meta.env.VITE_API_URL}`/{url.shortUrl}
                   </a>
                 </td>
                 <td className="p-3 text-center">{url.clicks}</td>
