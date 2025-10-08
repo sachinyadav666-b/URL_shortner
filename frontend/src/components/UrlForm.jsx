@@ -12,9 +12,11 @@ export default function UrlForm() {
       console.log("Backend URL:", import.meta.env.VITE_API_URL);
 
       const res = await API.post("/short", { originalUrl }); // ✅ match backend
-      console.log(res);
+      console.log(res.data);
       setShortUrl(res.data);
+
       // setOriginalUrl("");
+
     } catch (err) {
       console.error(err);
       alert("Error generating short URL");

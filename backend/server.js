@@ -25,7 +25,8 @@ app.use(cors({
 
 // Connect Database
 connectDB();
-
+console.log(process.env.CLIENT_URL);
+console.log("hello");
 /* ========================
    AUTH ROUTES
 ======================== */
@@ -59,7 +60,9 @@ app.post("/api/short", async (req, res) => {
     }
     const shortUrl = nanoid(8)
     const url = new Url({ originalUrl, shortUrl })
-    const myUrl = `process.env.BASE_URL/${shortUrl}`
+    console.log(shortUrl);
+    const myUrl = `${process.env.BASE_URL}/${shortUrl}`;
+    console.log(myUrl);
     const qrCodeimg = await QRCode.toDataURL(myUrl)
     await url.save()
     res.status(200).json({ message: "URL Generated", shortUrl: myUrl, qrCodeimg })
