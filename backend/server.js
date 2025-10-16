@@ -20,6 +20,7 @@ const PORT = process.env.PORT || 5002;
 app.use(express.json());
 app.use(cors({
   origin: process.env.CLIENT_URL,  // e.g. https://myportfolio-sachin.vercel.app
+  credentials: true
 }));
 
 

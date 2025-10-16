@@ -4,9 +4,11 @@ import API from ".././services/api";
 export default function UrlForm() {
   const [originalUrl, setOriginalUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true)
     console.log(originalUrl);
     try {
       console.log("Backend URL:", import.meta.env.VITE_API_URL);
@@ -16,7 +18,7 @@ export default function UrlForm() {
       setShortUrl(res.data);
 
       // setOriginalUrl("");
-
+      setLoading(false)
     } catch (err) {
       console.error(err);
       alert("Error generating short URL");
@@ -41,8 +43,9 @@ export default function UrlForm() {
         <button
           type="submit"
           className="bg-indigo-600 text-white px-5 py-3 rounded-lg hover:bg-indigo-700 transition"
+          disabled = {loading}
         >
-          Shorten
+          {loading?"Wait.." : "shorten"}
         </button>
       </form>
       {shortUrl && (
@@ -53,6 +56,7 @@ export default function UrlForm() {
             target="_blank"
             rel="noopener noreferrer"
             className="text-indigo-600 font-medium hover:underline break-words"
+            
           >
             {shortUrl?.shortUrl}
           </a>
